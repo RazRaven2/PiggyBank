@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Welcome Screen Colors -->
+    <color name="welcome_background">#FFE3F2FD</color>
+    <color name="title_text">#FF1976D2</color>
+
+    <!-- Main Screen Colors -->
+    <color name="main_background">#FFFCE4EC</color>
+    <color name="primary_text">#FF333333</color>
+    <color name="secondary_text">#FF666666</color>
+    <color name="hint_text">#FFAAAAAA</color>
+
+    <!-- Button & Component Colors -->
+    <color name="button_background">#FF42A5F5</color>
+    <color name="edit_text_background">#FFFFFFFF</color>
+    <color name="result_background">#FFFFE082</color>
+    <color name="result_text">#FF1565C0</color>
+    <color name="spinner_background">#FFFFFFFF</color>
+</resources>

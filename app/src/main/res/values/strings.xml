@@ -1,0 +1,42 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">PiggyBank</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_title">PiggyBank</string>
+    <string name="start_button">Start</string>
+    <string name="vault_door_description">Vault Door</string>
+
+    <!-- Main Screen -->
+    <string name="main_title">Count Your Coins</string>
+    <string name="calculate_button">Calculate Total</string>
+    <string name="result_placeholder">Enter coins and tap Calculate</string>
+    <string name="coin_instructions">Tap coins or enter amounts below</string>
+    <string name="balance_default">Balance: $0.00</string>
+    <string name="balance_label">Balance: %1$s</string>
+    <string name="saving_result_message">You are saving %1$s</string>
+    <string name="spending_result_message">You are spending %1$s</string>
+    <string name="not_enough_money_message">Not enough money to spend that amount.</string>
+    <string name="select_mode_message">Please choose Saving or Spending.</string>
+
+    <!-- Mode Spinner Options -->
+    <string name="mode_prompt">Select action</string>
+    <string name="mode_saving">Saving</string>
+    <string name="mode_spending">Spending</string>
+
+    <!-- Coin Labels and Hints -->
+    <string name="quarters_label">Quarters</string>
+    <string name="quarters_hint">Enter number of quarters</string>
+    <string name="dimes_label">Dimes</string>
+    <string name="dimes_hint">Enter number of dimes</string>
+    <string name="nickels_label">Nickels</string>
+    <string name="nickels_hint">Enter number of nickels</string>
+    <string name="pennies_label">Pennies</string>
+    <string name="pennies_hint">Enter number of pennies</string>
+
+    <!-- Coin Button Descriptions (for accessibility) -->
+    <string name="quarter_description">Quarter coin - tap to add</string>
+    <string name="dime_description">Dime coin - tap to add</string>
+    <string name="nickel_description">Nickel coin - tap to add</string>
+    <string name="penny_description">Penny coin - tap to add</string>
+</resources>
