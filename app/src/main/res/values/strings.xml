@@ -18,6 +18,8 @@
     <string name="spending_result_message">You are spending %1$s</string>
     <string name="not_enough_money_message">Not enough money to spend that amount.</string>
     <string name="select_mode_message">Please choose Saving or Spending.</string>
+    <string name="reset_button">Reset Piggy Bank</string>
+    <string name="reset_confirmation_message">Piggy bank reset.</string>
 
     <!-- Mode Spinner Options -->
     <string name="mode_prompt">Select action</string>

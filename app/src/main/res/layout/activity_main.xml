@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    ScrollView is required because the coin icon rows can grow as counts increase,
+    which can push lower controls (Calculate/Reset/Result) off-screen on small devices.
+    fillViewport keeps the content stretched to full screen height when icon counts are low.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background"
-    tools:context=".MainActivity">
+    android:fillViewport="true">
+
+    <!-- Single direct child preserves all existing ConstraintLayout logic and IDs. -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_background"
+        tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/balance_text"
@@ -131,6 +142,20 @@
             app:srcCompat="@drawable/penny" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Lightweight host view for coin-drop animation. -->
+    <ImageView
+        android:id="@+id/coin_drop_animation_view"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coin_buttons_layout"
+        tools:srcCompat="@drawable/quarter" />
+
     <!-- Quarters Input -->
     <TextView
         android:id="@+id/quarters_label"
@@ -164,6 +189,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/quarters_label" />
 
+    <HorizontalScrollView
+        android:id="@+id/quarters_icons_scroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quarters_input">
+
+        <LinearLayout
+            android:id="@+id/quarters_icons_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
     <!-- Dimes Input -->
     <TextView
         android:id="@+id/dimes_label"
@@ -177,7 +222,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/quarters_input" />
+        app:layout_constraintTop_toBottomOf="@id/quarters_icons_scroll" />
 
     <EditText
         android:id="@+id/dimes_input"
@@ -197,6 +242,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dimes_label" />
 
+    <HorizontalScrollView
+        android:id="@+id/dimes_icons_scroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dimes_input">
+
+        <LinearLayout
+            android:id="@+id/dimes_icons_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
     <!-- Nickels Input -->
     <TextView
         android:id="@+id/nickels_label"
@@ -210,7 +275,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dimes_input" />
+        app:layout_constraintTop_toBottomOf="@id/dimes_icons_scroll" />
 
     <EditText
         android:id="@+id/nickels_input"
@@ -230,6 +295,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nickels_label" />
 
+    <HorizontalScrollView
+        android:id="@+id/nickels_icons_scroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nickels_input">
+
+        <LinearLayout
+            android:id="@+id/nickels_icons_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
     <!-- Pennies Input -->
     <TextView
         android:id="@+id/pennies_label"
@@ -243,7 +328,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nickels_input" />
+        app:layout_constraintTop_toBottomOf="@id/nickels_icons_scroll" />
 
     <EditText
         android:id="@+id/pennies_input"
@@ -263,6 +348,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pennies_label" />
 
+    <HorizontalScrollView
+        android:id="@+id/pennies_icons_scroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pennies_input">
+
+        <LinearLayout
+            android:id="@+id/pennies_icons_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
     <!-- Calculate Button -->
     <Button
         android:id="@+id/calculate_button"
@@ -279,7 +384,43 @@
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pennies_input" />
+        app:layout_constraintTop_toBottomOf="@id/pennies_icons_scroll" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/button_background"
+        android:text="@string/reset_button"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculate_button" />
+
+    <!--
+        Overlay view for wizard spell animation.
+        It is constrained to all sides of Calculate so it stays centered on top,
+        while width/height are set in code from proportional screen sizing.
+    -->
+    <ImageView
+        android:id="@+id/wizard_spell_animation_view"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:contentDescription="@null"
+        android:elevation="8dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/calculate_button"
+        app:layout_constraintEnd_toEndOf="@id/calculate_button"
+        app:layout_constraintStart_toStartOf="@id/calculate_button"
+        app:layout_constraintTop_toTopOf="@id/calculate_button"
+        tools:srcCompat="@drawable/wizardcat_money_spell" />
 
     <!-- Result Text View -->
     <TextView
@@ -301,6 +442,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calculate_button" />
+        app:layout_constraintTop_toBottomOf="@id/reset_button" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
